@@ -1,0 +1,109 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IA Proyecto Final</title>
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}" />
+    <script src="{% static 'js/modernizr.custom.js' %}"></script>
+</head>
+
+<body>
+    <!-- MODAL ERROR -->
+
+    <!-- Boton de prueba -->
+    <div id="open-modal" class="modal-window" style="z-index: 9999;">
+        <div style="font-family: Poppins;">
+            <a href="#" title="Close" class="modal-close">Cerrar</a>
+            <h1 style="color: red;">ERROR!</h1><br>
+            <div>Selecciona 2 o mas trastornos para inciar el test.</div>
+        </div>
+    </div>
+    {% for message in messages %}
+    {% if message|stringformat:'s' == "1" %}
+        <script>window.location.href='#open-modal'</script>
+    {% endif %}
+    {% endfor %}
+    <div id="wrapper4" style="display: inline; overflow-y: scroll;">
+        <div id="feed">
+            <h1 style="font-size: 3.5em; font-stretch: semi-expanded; margin-top: 1em; margin-bottom: 1em;">
+                Selecciona 2 o mas trastornos a analizar
+            </h1>
+            <form class="ac-custom ac-checkbox ac-boxfill" style="margin-left: 25em;" method="POST">
+                {% csrf_token %}
+                <div style="font-size: .8em !important; font-family: Poppins;">
+                    <ul>
+                        <li>
+                            <input id="T1" name="transtornos[]" type="checkbox" value="Paranoide">
+                            <label for="cb10">Trastorno paranoide de la personalidad
+                            </label>
+                        </li>
+                        <li>
+                            <input id="T2" name="transtornos[]" type="checkbox" value="Esquizoide">
+                            <label for="cb10">Trastorno esquizoide de la personalidad
+                            </label>
+                        </li>
+                        <li>
+                            <input id="T3" name="transtornos[]" type="checkbox" value="Esquizotipico">
+                            <label for="cb10">Trastorno esquizotípico de la personalidad
+                            </label>
+                        </li>
+                        <li>
+                            <input id="T4" name="transtornos[]" type="checkbox" value="Antisocial">
+                            <label for="cb10">Trastorno de personalidad antisocial
+                            </label>
+                        </li>
+                        <li>
+                            <input id="T5" name="transtornos[]" type="checkbox" value="limite">
+                            <label for="cb10">Trastorno límite de la personalidad
+                            </label>
+                        </li>
+                        <li>
+                            <input id="T6" name="transtornos[]" type="checkbox" value="Histrionico">
+                            <label for="cb10">Trastorno histriónico de la personalidad
+                            </label>
+                        </li>
+                        <li>
+                            <input id="T7" name="transtornos[]" type="checkbox" value="Narcisista">
+                            <label for="cb10">Trastorno narcisista de la personalidad
+                            </label>
+                        </li>
+                        <li>
+                            <input id="T8" name="transtornos[]" type="checkbox" value="Evitacion">
+                            <label for="cb10">Trastorno de la personalidad por evitación
+                            </label>
+                        </li>
+                        <li>
+                            <input id="T9" name="transtornos[]" type="checkbox" value="Dependiente">
+                            <label for="cb10">Trastorno de la personalidad dependiente
+                            </label>
+                        </li>
+                        <li>
+                            <input id="T10" name="transtornos[]" type="checkbox" value="Obs-Com">
+                            <label for="cb10">Trastorno de la personalidad obsesivo-compulsiva
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <input type="submit" id="btnSubmit" value="Ir a Cuestionario" class="button"
+                    style="margin-left: 13.5em; margin-top: 1.2em;">
+            </form>
+            <center>
+                <a href="/" id="btnHome" class="button2" style="font-family: Poppins;">
+                    Inicio
+                </a>
+            </center>
+        </div>
+    </div>
+    </div>
+
+    <script src="{% static 'jquery/3.1.1/jquery.min.js' %}"></script>
+    <script src="{% static 'js/index.min.js' %}"></script>
+    <script src="{% static 'js/svgcheckbx.js' %}"></script>
+</body>
+
+</html>

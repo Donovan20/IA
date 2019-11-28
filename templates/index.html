@@ -1,0 +1,186 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IA Proyecto Final</title>
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+</head>
+
+<body>
+
+    <!-- Se utiliza para generar el fondo de la seccion de inicio -->
+    <canvas id="world"></canvas>
+
+    <!-- Seccion de inicio/bienvenida -->
+    <div id="wrapper">
+        <div id="welcome">
+            <div id="warp2">
+                <h2 id="intro" style="color:#c38d7c;">
+                    Diagnostico de enfermedades mentales aplicando Logica Difusa
+                </h2>
+                <p id="smallp2">
+                    <span id="redpulse" style="color: #ffffff; font-weight:500; font-size: 1em;">
+                        Test diagnostico para Trastornos de la Personalidad
+                    </span>
+                </p>
+                <div id="help">
+                    <h3 style="margin-top:50px;">
+                        <a id="share3" href="/diagnostico_general/" style="font-weight:500;">
+                            Comenzar Diagnostico
+                        </a>
+                        <br><br><br>
+                        <a href="/transtornos/" id="share3"
+                            style="font-weight:500;">
+                            Comenzar Diagnostico Personalizado
+                        </a>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seccion del modulo de pre-cargado -->
+    <div id="wrapper2">
+        <div id="feed">
+            <div id="comparison">
+                <table class="fl-table" style="font-family: Poppins;">
+                    <thead>
+                        <tr>
+                            <th>Trastornos</th>
+                            <th>S 1</th>
+                            <th>S 2</th>
+                            <th>S 3</th>
+                            <th>S 4</th>
+                            <th>S 5</th>
+                            <th>S 6</th>
+                            <th>S 7</th>
+                            <th>S 8</th>
+                            <th>S 9</th>
+                            <th>S 10</th>
+                            <th>S 11</th>
+                            <th>S 12</th>
+                            <th>S 13</th>
+                            <th>S 14</th>
+                            <th>S 15</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for enfermedad in enfermedades %}
+                        <tr>
+                            <td>{{enfermedad.enfermedad}}</td>
+                            <td>{{enfermedad.s1}}</td>
+                            <td>{{enfermedad.s2}}</td>
+                            <td>{{enfermedad.s3}}</td>
+                            <td>{{enfermedad.s4}}</td>
+                            <td>{{enfermedad.s5}}</td>
+                            <td>{{enfermedad.s6}}</td>
+                            <td>{{enfermedad.s7}}</td>
+                            <td>{{enfermedad.s8}}</td>
+                            <td>{{enfermedad.s9}}</td>
+                            <td>{{enfermedad.s10}}</td>
+                            <td>{{enfermedad.s11}}</td>
+                            <td>{{enfermedad.s12}}</td>
+                            <td>{{enfermedad.s13}}</td>
+                            <td>{{enfermedad.s14}}</td>
+                            <td>{{enfermedad.s15}}</td>
+                        </tr>
+                        {% endfor %}
+                    <tbody>
+                </table>
+            </div>
+            <div id="footer">
+                <h3>
+                    <a id="share" onclick="show('wrapper'), show('world'), hide('wrapper2');" style="font-weight:500;">
+                        Regresar
+                    </a>
+                </h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header con link a la seccion Acerca de -->
+    <div id="heading">
+        <h3 id="logo" width="150vw"
+            onclick="about('about'), ga('send', 'event', { eventCategory: 'nav', eventAction: 'about'});">
+            Acerca de
+        </h3>
+        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
+        <h3 id="logo" width="150vw" onclick="hide('wrapper'), hide('world'), show('wrapper2');">
+            Módulo Pre-cargado
+        </h3>
+    </div>
+
+    <!-- Seccion Acerca de -->
+    <div id="about">
+        <div id="welcome">
+            <div id="warp3">
+                <h3 style="color:#331f45; line-height:0.1em; font-size: xx-large;">
+                    Hecho por
+                    <h3 style="font-family: Poppins; color:#331f45; font-size:500;">
+                        <span style="font-family: Poppins; font-size:400; color:#ff524e;">
+                            Roberto Cordero Salas
+                        </span>
+                        <span style="font-family: Poppins; font-size:400; color:#331f45;">
+                            &
+                        </span>
+                        <span style="font-family: Poppins; font-size:400; color:#ff524e;">
+                            Azael Donovan Avila Aldama
+                        </span>
+                    </h3>
+                </h3>
+                <h3 id="humble" style="font-family: Poppins; color:#331f45; margin-top:-4px;">
+                    Expediente:
+                    <span style="color:#ff524e; font-weight:500;">
+                        240022
+                    </span>
+                    &
+                    <span style="color:#ff524e; font-weight:500;">
+                        236895
+                    </span>
+                </h3>
+                <h3 id="humble" style="font-family: Poppins; color:#331f45; margin-top:-4px;">
+                    Materia:
+                    <span style="color:#ff524e; font-weight:500;">
+                        Inteligencia Artificial
+                    </span>
+                </h3>
+                <h3 id="humble" style="font-family: Poppins; color:#331f45; margin-top:-4px;">
+                    Referencias:
+                    <h5 style="color:#ff524e; font-weight:500; line-height: 0.1em;">
+                        <ul>
+                            American Psychiatric Association. (2013).
+                            Diagnostic and statistical manual of mental disorders
+                            (5th ed.).
+                        </ul>
+                        <ul>
+                            Mayo Clinic. Personality Disorders.
+                            https://www.mayoclinic.org/diseases-conditions/personality-disorders/symptoms-causes/syc-20354463
+                        </ul>
+                        <ul>
+                            Loranger, A. W., Janca, A., & Sartorius, N. (1997).
+                            International Personality Disorder Examination (IPDE) - ICD-10 module,
+                            Cambridge, U.K: Cambridge University Press.
+                        </ul>
+                    </h5>
+                </h3>
+                <div id="footer2">
+                    <h3>
+                        <a id="share" onclick="abouthide('about')" style="font-weight:500;">
+                            Regresar
+                        </a>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'jquery/3.1.1/jquery.min.js' %}"></script>
+    <script src="{% static 'js/index.min.js' %}"></script>
+</body>
+
+</html>

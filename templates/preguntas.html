@@ -1,0 +1,188 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IA Proyecto Final</title>
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+</head>
+
+<body>
+    <div id="wrapper6" style="overflow-y: scroll; display: inline;">
+        <div style="margin-top: 3em;">
+            <h1 style="font-size: 3em !important; margin-top: 1.7em; margin-bottom: 1em;">
+                Contestar las siguientes 15 preguntas:
+            </h1>
+            <br><br>
+            <form method="POST">
+                {% csrf_token %}
+                <div>
+                    <div>
+                        <h1 style="font-size: 1.4em !important; margin-bottom: 1em">
+                            1. ¿Qué tan cómodo te sientes al estar rodeado de personas?
+                        </h1>
+                        <input type="range" min="1" max="10" value="5" step="1" id="S1" name="usuario[]">
+                        <br>
+                        <span style="margin-left: 18%; font-size: .7em;">Incomodo</span>
+                        <span style="margin-left: 55.7%; font-size: .7em;">Comodo</span>
+                    </div>
+                    <br>
+                    <div>
+                        <h1 style="font-size: 1.4em !important; margin-bottom: 1em">
+                            2. ¿Qué tanto te interesas por las demás personas?
+                        </h1>
+                        <input type="range" min="1" max="10" value="5" id="S2" name="usuario[]">
+                        <br>
+                        <span style="margin-left: 18%; font-size: .7em;">No me intereso</span>
+                        <span style="margin-left: 53%; font-size: .7em;">Me intereso</span>
+                    </div>
+                    <br>
+                    <div>
+                        <h1 style="font-size: 1.4em !important; margin-bottom: 1em">
+                            3. ¿Qué tanto te agrada la idea de ser el centro de atención?
+                        </h1>
+                        <input type="range" min="1" max="10" value="5" id="S3" name="usuario[]">
+                        <br>
+                        <span style="margin-left: 18%; font-size: .7em;">No me agrada</span>
+                        <span style="margin-left: 53.5%; font-size: .7em;">Me agrada</span>
+                    </div>
+                    <br>
+                    <div>
+                        <h1 style="font-size: 1.4em !important; margin-bottom: 1em">
+                            4. ¿Qué tanto respetas las normas establecidas en un lugar?
+                        </h1>
+                        <input type="range" min="1" max="10" value="5" id="S4" name="usuario[]">
+                        <br>
+                        <span style="margin-left: 18%; font-size: .7em;">No respeto</span>
+                        <span style="margin-left: 55.7%; font-size: .7em;">Respeto</span>
+                    </div>
+                    <br>
+                    <div>
+                        <h1 style="font-size: 1.4em !important; margin-bottom: 1em">
+                            5. ¿Qué tanto expresas tus emociones hacia los demás?
+                        </h1>
+                        <input type="range" min="1" max="10" value="5" id="S5" name="usuario[]">
+                        <br>
+                        <span style="margin-left: 18%; font-size: .7em;">Soy inexpresivo</span>
+                        <span style="margin-left: 52.5%; font-size: .7em;">Soy expresivo</span>
+                    </div>
+                    <br>
+                    <div>
+                        <h1 style="font-size: 1.4em !important; margin-bottom: 1em">
+                            6. ¿Qué tanta angustia, desesperación, etc.
+                            te genera el ver algo fuera de su lugar?
+                        </h1>
+                        <input type="range" min="1" max="10" value="5" id="S6" name="usuario[]">
+                        <br>
+                        <span style="margin-left: 18%; font-size: .7em;">Me da igual</span>
+                        <span style="margin-left: 50%; font-size: .7em;">Me angustia (casi me da un paro)</span>
+                    </div>
+                    <br>
+                    <div>
+                        <h1 style="font-size: 1.4em !important; margin-bottom: 1em">
+                            7. ¿Qué tanto te importa tu imagen personal?
+                        </h1>
+                        <input type="range" min="1" max="10" value="5" id="S7" name="usuario[]">
+                        <br>
+                        <span style="margin-left: 18%; font-size: .7em;">No me importa</span>
+                        <span style="margin-left: 53.2%; font-size: .7em;">Me importa</span>
+                    </div>
+                    <br>
+                    <div>
+                        <h1 style="font-size: 1.4em !important; margin-bottom: 1em">
+                            8. ¿Qué tanto te agrada la idea de iniciar una vida en otro país?
+                        </h1>
+                        <input type="range" min="1" max="10" value="5" id="S8" name="usuario[]">
+                        <br>
+                        <span style="margin-left: 18%; font-size: .7em;">No me agrada</span>
+                        <span style="margin-left: 51.5%; font-size: .7em;">Mucho, ya vamonos</span>
+                    </div>
+                    <br>
+                    <div>
+                        <h1 style="font-size: 1.4em !important; margin-bottom: 1em">
+                            9. ¿Qué tanto prefieres las actividades que puedas hacer solo?
+                        </h1>
+                        <input type="range" min="1" max="10" value="5" id="S9" name="usuario[]">
+                        <br>
+                        <span style="margin-left: 18%; font-size: .7em;">No me gustan</span>
+                        <span style="margin-left: 51.7%; font-size: .7em;">Entre mas solo mejor</span>
+                    </div>
+                    <br>
+                    <div>
+                        <h1 style="font-size: 1.4em !important; margin-bottom: 1em">
+                            10. ¿Qué tan bien aceptas las criticas o comentarios de los demás hacia ti?
+                        </h1>
+                        <input type="range" min="1" max="10" value="5" id="S10" name="usuario[]">
+                        <br>
+                        <span style="margin-left: 18%; font-size: .7em;">Me enojo mucho</span>
+                        <span style="margin-left: 52.5%; font-size: .7em;">Me dan igual</span>
+                    </div>
+                    <br>
+                    <div>
+                        <h1 style="font-size: 1.4em !important; margin-bottom: 1em">
+                            11. ¿Qué tan frecuentemente tienes la sensación de que alguien te sigue,
+                            que los demás traman algo en tu contra o similar?
+                        </h1>
+                        <input type="range" min="1" max="10" value="5" id="S11" name="usuario[]">
+                        <br>
+                        <span style="margin-left: 18%; font-size: .7em;">Nunca</span>
+                        <span style="margin-left: 56.3%; font-size: .7em;">A todas horas</span>
+                    </div>
+                    <br>
+                    <div>
+                        <h1 style="font-size: 1.4em !important; margin-bottom: 1em">
+                            12. ¿Qué tanto influyen las decisiones de los que te rodean en tu vida?
+                        </h1>
+                        <input type="range" min="1" max="10" value="5" id="S12" name="usuario[]">
+                        <br>
+                        <span style="margin-left: 18%; font-size: .7em;">Nada</span>
+                        <span style="margin-left: 55%; font-size: .7em;">Ellos manejan mi vida</span>
+                    </div>
+                    <br>
+                    <div>
+                        <h1 style="font-size: 1.4em !important; margin-bottom: 1em">
+                            13. ¿Qué tanto te agrada la idea de ser el líder en un proyecto?
+                        </h1>
+                        <input type="range" min="1" max="10" value="5" id="S13" name="usuario[]">
+                        <br>
+                        <span style="margin-left: 18%; font-size: .7em;">No me agrada</span>
+                        <span style="margin-left: 52.5%; font-size: .7em;">Mucho, seria CEO</span>
+                    </div>
+                    <br>
+                    <div>
+                        <h1 style="font-size: 1.4em !important; margin-bottom: 1em">
+                            14. ¿Qué tanto consideras que es más importante tu trabajo sobre
+                            tus relaciones (amigos, familia, etc.)?
+                        </h1>
+                        <input type="range" min="1" max="10" value="5" id="S14" name="usuario[]">
+                        <br>
+                        <span style="margin-left: 18%; font-size: .7em;">No es importante</span>
+                        <span style="margin-left: 47.5%; font-size: .7em;">El trabajo sobre todas las cosas</span>
+                    </div>
+                    <br>
+                    <div>
+                        <h1 style="font-size: 1.4em !important; margin-bottom: 1em">
+                            15. ¿Qué tan cómodo te sientes cuando alguien te halaga?
+                        </h1>
+                        <input type="range" min="1" max="10" value="5" id="S15" name="usuario[]">
+                        <br>
+                        <span style="margin-left: 18%; font-size: .7em;">Incomodo</span>
+                        <span style="margin-left: 55.7%; font-size: .7em;">Comodo</span>
+                    </div>
+                    <br><br>
+                    <center>
+                        <input type="submit" id="btnSubmit" value="Ver Resultado" class="button">
+                    </center>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="{% static 'jquery/3.1.1/jquery.min.js' %}"></script>
+    <script src="{% static 'js/index.min.js' %}"></script>
+</body>
+
+</html>

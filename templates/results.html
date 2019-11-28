@@ -1,0 +1,128 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IA Proyecto Final</title>
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+</head>
+
+<body>
+    <div id="results" style="display: inline;">
+        <div id="welcome">
+            <div id="warp">
+                <h1 style="font-size: 3em; margin-top: 1em; margin-left: 4.5em;">
+                    Resultado
+                </h1>
+                {% if resultados != 'no' %}
+                <div style="margin-top: 3em; margin-left: 10.55em;">
+                    <table class="fl-table" style="font-family: Poppins;">
+                        <thead>
+                            <tr>
+                                <th>Trastorno</th>
+                                <th>Tratamiento</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for resultado in resultados %}
+                                
+                                {% if resultado.enfermedad == 'Paranoide' %}
+                                    <tr id="Paranoide">
+                                        <td>Trastorno paranoide de la personalidad</td>
+                                        <td>Psicoterapia<br>
+                                            Farmacoterapia (benzodiacepinas y antipsicóticos atípicos)
+                                        </td>
+                                    </tr>
+                                {% elif resultado.enfermedad == 'Ezquizoide' %}
+                                    <tr id="Ezquizoide">
+                                        <td>Trastorno esquizoide de la personalidad</td>
+                                        <td>Tratamiento Trastorno esquizoide de la personalidad</td>
+                                    </tr>
+                                {% elif resultado.enfermedad == 'Esquizotipico' %}
+                                    <tr id="Ezquizotipico">
+                                        <td>Trastorno esquizotípico de la personalidad</td>
+                                        <td>Psicoterapia<br>
+                                            Farmacoterapia (antipsicoticos atípicos, antidepresivos y psicoestimulantes)
+                                        </td>
+                                    </tr>
+                                {% elif resultado.enfermedad == 'Antisocial' %}
+                                    <tr id="Antisocial">
+                                        <td>Trastorno de personalidad antisocial</td>
+                                        <td>Psicoterapia<br>
+                                            Farmacoterapia (tratamiento sintomático)
+                                        </td>
+                                    </tr>
+                                {% elif resultado.enfermedad == 'Limite' %}
+                                    <tr id="Limite">
+                                        <td>Trastorno límite de la personalidad</td>
+                                        <td>Psicoterapia (TDC, TCC, TBM)<br>
+                                            Hospitalizacion
+                                        </td>
+                                    </tr>
+                                {% elif resultado.enfermedad == 'Histrionico' %}
+                                    <tr id="Histrionico">
+                                        <td>Trastorno histriónico de la personalidad</td>
+                                        <td>Psicoterapia<br>
+                                            Farmacoterapia (antidepresivos y antipsicóticos)
+                                        </td>
+                                    </tr>
+                                {% elif resultado.enfermedad == 'Narcisista' %}
+                                    <tr id="Narcisista">
+                                        <td>Trastorno narcisista de la personalidad</td>
+                                        <td>Psicoterapia<br>
+                                            Farmacoterapia (antidepresivos y antipsicóticos)
+                                        </td>
+                                    </tr>
+                                {% elif resultado.enfermedad == 'Evitacion' %}
+                                    <tr id="Evitacion">
+                                        <td>Trastorno de la personalidad por evitación</td>
+                                        <td>Psicoterapia<br>
+                                            Farmacoterapia (atenolol y serotoninergicos)
+                                        </td>
+                                    </tr>
+                                {% elif resultado.enfermedad == 'Dependiente' %}
+                                    <tr id="Dependiente">
+                                        <td>Trastorno de la personalidad dependiente</td>
+                                        <td>Psicoterapia<br>
+                                            Farmacoterapia (benzodiacepinas y serotoninergicos)
+                                        </td>
+                                    </tr>
+                                {% elif resultado.enfermedad == 'Obs-Com' %}
+                                    <tr id="Obs-comp">
+                                        <td>Trastorno de la personalidad obsesivo-compulsivo</td>
+                                        <td>Psicoterapia<br>
+                                            Farmacoterapia (benzodiacepinas, clorimipramina y serotoninergicos)
+                                        </td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <!-- div no hay trastorno -->
+                <div id="noHay">
+                    <h3 style="font-size: 2em !important; margin-left: 22%;">
+                        No tienes ningun trastorno
+                    </h3>
+                </div>
+                {% endif %}
+
+                <div id="footer"
+                    style="font-family: Poppins; position: static; margin-bottom: 1.2em; margin-top: 1em; margin-left: 20.2%;">
+                    <a id="share3" href="/" style="font-weight:500;">
+                        Ir a Incio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'jquery/3.1.1/jquery.min.js' %}"></script>
+    <script src="{% static 'js/index.min.js' %}"></script>
+</body>
+
+</html>
