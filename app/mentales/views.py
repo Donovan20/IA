@@ -45,7 +45,10 @@ def diagnostico_general(request):
         if len(res) >= 1:
             request.session['resultado'] = res
         else:
-            del request.session['resultado']
+            try:
+                del request.session['resultado']
+            except:
+                pass
         return redirect('/resultado/')
     return render(request,'preguntas.html')
 
@@ -110,11 +113,14 @@ def diagnostico_especifico(request):
                     aux['enfermedad'] = enfermedad[0]
                     aux['total'] = suma
                     res.append(aux)
+            
         enfermedades = []
         if len(res) >= 1:
             request.session['resultado'] = res
         else:
-            print('entro')
-            del request.session['resultado']
+            try:
+                del request.session['resultado']
+            except:
+                pass
         return redirect('/resultado/')
     return render(request,'preguntas.html')
