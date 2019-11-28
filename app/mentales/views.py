@@ -76,13 +76,6 @@ def transtornos(request):
 
 def diagnostico_especifico(request):
     global enfermedades
-    # print(enfermedades)
-    # union = []
-    # for i in range(0,15):
-    #     tempo = []
-    #     for x in range(len(enfermedades)):
-    #         tempo.append(enfermedades[x][i])
-    #     union.append(max(tempo))
     if request.method == 'POST':
         usuario = request.POST.getlist('usuario[]')
         for x in range(0,15):
