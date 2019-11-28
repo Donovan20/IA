@@ -15,7 +15,7 @@ def diagnostico_general(request):
             usuario[x] = int(usuario[x])
         cruce = []
         tempo = []
-        umbral = 30
+        umbral = 25
         mayor = {'enfermedad':'','total':0}
         res = []
         for i in range(0,10):
@@ -25,7 +25,6 @@ def diagnostico_general(request):
             cruce.append(tempo)
             tempo = []
         
-        print(cruce)
         for enfermedad in cruce:
             suma = 0
             for i in range(1,16):
@@ -43,18 +42,18 @@ def diagnostico_general(request):
                     aux['total'] = suma
                     res.append(aux)
             
-            print(enfermedad)
-            print(suma)
-        request.session['resultado'] = res
+        if len(res) >= 1:
+            request.session['resultado'] = res
+        else:
+            del request.session['resultado']
         return redirect('/resultado/')
     return render(request,'preguntas.html')
 
 def resultados(request):
-    resultado = request.session['resultado']
-    print(resultado)
-    if len(resultado) > 0:
+    try: 
+        resultado = request.session['resultado']
         return render(request,'results.html',{'resultados':resultado})
-    else:
+    except:
         return render(request,'results.html',{'resultados':'no'})
 
 enfermedades = []
@@ -65,7 +64,6 @@ def transtornos(request):
         for x in range(0,len(transtornos)):
             enfermedades += (Modulo.objects.filter(enfermedad =transtornos[x]).values_list('enfermedad','s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12','s13','s14','s15'))
         if len(transtornos) >= 2:
-            print('entro')
             return redirect('/diagnostico_especifico/')
         else:
             messages.error(request,'1')
@@ -88,7 +86,7 @@ def diagnostico_especifico(request):
             usuario[x] = int(usuario[x])
         cruce = []
         tempo = []
-        umbral = 30
+        umbral = 25
         mayor = {'enfermedad':'','total':0}
         res = []
         for i in range(0,len(enfermedades)):
@@ -97,7 +95,6 @@ def diagnostico_especifico(request):
                 tempo.append(min(enfermedades[i][x],usuario[x-1]))
             cruce.append(tempo)
             tempo = []
-        print(cruce)
         for enfermedad in cruce:
             suma = 0
             for i in range(1,16):
@@ -113,7 +110,11 @@ def diagnostico_especifico(request):
                     aux['enfermedad'] = enfermedad[0]
                     aux['total'] = suma
                     res.append(aux)
-                
-        request.session['resultado'] = res
+        enfermedades = []
+        if len(res) >= 1:
+            request.session['resultado'] = res
+        else:
+            print('entro')
+            del request.session['resultado']
         return redirect('/resultado/')
     return render(request,'preguntas.html')
